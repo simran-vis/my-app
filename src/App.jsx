@@ -1,8 +1,24 @@
-// App.jsx
-import Footer from './components/Footer';
-import HeaderBar from './components/HeaderBar';
-import HeroSection from './components/HeroSection';
+import { Routes, Route, Navigate } from 'react-router-dom';
+import HeaderBar from './pages/home/HeaderBar';
 import Navbar from './components/Navbar';
+import Footer from './components/Footer';
+
+import HeroSection from './pages/home/HeroSection';
+import ServiceSection from './pages/home/ServiceSection';
+import FeaturedCategories from './pages/home/FeaturedCategories';
+import PopularProducts from './pages/home/FeaturedProducts';
+import NewsletterSection from './pages/home/NewsletterSection';
+import WhyChooseUs from './pages/Home/WhyChooseUs';
+import Product from './pages/product/Product';
+import About from './pages/About/About';
+import Contact from './pages/Contact/Contact';
+import Login from './pages/Login/Login';
+import Register from './pages/Register/Register';
+import Cart from './pages/Cart/Cart';
+import Wishlist from './pages/Wishlist/Wishlist';
+import Category from './pages/Category/Category';
+
+
 
 function App() {
   return (
@@ -10,12 +26,32 @@ function App() {
       <HeaderBar />
       <Navbar />
       <main className="min-h-screen">
-        {/* Add your main content here */}
-        <div className="container mx-auto py-8">
-        < HeroSection/>
-        </div>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <div className="container mx-auto py-8">
+                <HeroSection />
+                <ServiceSection />
+                <FeaturedCategories />
+                <PopularProducts />
+                <NewsletterSection />
+                <WhyChooseUs />
+              </div>
+            }
+          />
+          <Route path="/product" element={<Product />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/category" element={<Category />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/wishlist" element={<Wishlist />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
       </main>
-      <Footer/>
+      <Footer />
     </div>
   );
 }

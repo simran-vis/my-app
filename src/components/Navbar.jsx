@@ -56,19 +56,26 @@ const Navbar = () => {
 
             {/* Icons */}
             <div className="flex items-center space-x-3">
-              <div className="relative">
-                <Heart className="h-6 w-6 text-gray-600 hover:text-[#1193d4] cursor-pointer transition-colors duration-200" />
-                <span className="absolute -top-1 -right-1 bg-[#1193d4] text-white text-xs rounded-full h-4 w-4 flex items-center justify-center">
-                  2
-                </span>
-              </div>
-              <div className="relative">
-                <ShoppingCart className="h-6 w-6 text-gray-600 hover:text-[#1193d4] cursor-pointer transition-colors duration-200" />
-                <span className="absolute -top-1 -right-1 bg-[#1193d4] text-white text-xs rounded-full h-4 w-4 flex items-center justify-center">
-                  3
-                </span>
-              </div>
-            </div>
+  {/* Wishlist */}
+  <div className="relative">
+    <Link to="/wishlist">
+      <Heart className="h-6 w-6 text-gray-600 hover:text-[#1193d4] cursor-pointer transition-colors duration-200" />
+      <span className="absolute -top-1 -right-1 bg-[#1193d4] text-white text-xs rounded-full h-4 w-4 flex items-center justify-center">
+        2
+      </span>
+    </Link>
+  </div>
+
+  {/* Cart */}
+  <div className="relative">
+    <Link to="/cart">
+      <ShoppingCart className="h-6 w-6 text-gray-600 hover:text-[#1193d4] cursor-pointer transition-colors duration-200" />
+      <span className="absolute -top-1 -right-1 bg-[#1193d4] text-white text-xs rounded-full h-4 w-4 flex items-center justify-center">
+        3
+      </span>
+    </Link>
+  </div>
+</div>
 
             {/* Buttons */}
             <div className="hidden md:flex items-center space-x-3">
