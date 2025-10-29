@@ -13,7 +13,6 @@ import Product from "./pages/product/Product";
 import About from "./pages/About/About";
 import Contact from "./pages/Contact/Contact";
 import Login from "./pages/Login/Login";
-import Register from "./pages/Register/Register";
 import Cart from "./pages/Cart/Cart";
 import Wishlist from "./pages/Wishlist/Wishlist";
 import Category from "./pages/Category/Category";
@@ -51,7 +50,6 @@ function App() {
           <Route path="/category" element={<Category />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/wishlist" element={<Wishlist />} />
           <Route path="*" element={<Navigate to="/" replace />} />
