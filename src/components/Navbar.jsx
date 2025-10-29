@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import logo from "../assets/logo2.png";
-import { Search, Heart, ShoppingCart, Menu, X } from 'lucide-react';
+import { Search, Heart, ShoppingCart, Menu, X, LogIn, CircleUser } from 'lucide-react';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -78,20 +78,15 @@ const Navbar = () => {
 </div>
 
             {/* Buttons */}
-            <div className="hidden md:flex items-center space-x-3">
-              <Link
-                to="/login"
-                className="px-4 py-2 text-[#1193d4] border border-[#1193d4] rounded-md hover:bg-[#1193d4] hover:text-white transition-colors duration-200"
-              >
-                Login
-              </Link>
-              <Link
-                to="/register"
-                className="px-4 py-2 bg-[#1193d4] text-white rounded-md hover:bg-[#0e80b3] transition-colors duration-200"
-              >
-                Register
-              </Link>
-            </div>
+           <div className="hidden md:flex items-center">
+  <Link
+    to="/login"
+    className="flex items-center gap-1 px-2 py-2 font-semibold bg-[#1193d4] text-white rounded-3xl hover:bg-[#0e80b3] transition-colors duration-200"
+  >
+    <CircleUser size={18} /> {/* 👈 Icon */}
+    <span>Sign In</span>
+  </Link>
+</div>
 
             {/* Mobile Menu Button */}
             <div className="md:hidden">

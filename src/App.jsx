@@ -1,30 +1,36 @@
-import { Routes, Route, Navigate } from 'react-router-dom';
-import HeaderBar from './pages/home/HeaderBar';
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
+import { Routes, Route, Navigate, useLocation } from "react-router-dom";
+import HeaderBar from "./pages/home/HeaderBar";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
-import HeroSection from './pages/home/HeroSection';
-import ServiceSection from './pages/home/ServiceSection';
-import FeaturedCategories from './pages/home/FeaturedCategories';
-import PopularProducts from './pages/home/FeaturedProducts';
-import NewsletterSection from './pages/home/NewsletterSection';
-import WhyChooseUs from './pages/Home/WhyChooseUs';
-import Product from './pages/product/Product';
-import About from './pages/About/About';
-import Contact from './pages/Contact/Contact';
-import Login from './pages/Login/Login';
-import Register from './pages/Register/Register';
-import Cart from './pages/Cart/Cart';
-import Wishlist from './pages/Wishlist/Wishlist';
-import Category from './pages/Category/Category';
-
-
+import HeroSection from "./pages/home/HeroSection";
+import ServiceSection from "./pages/home/ServiceSection";
+import FeaturedCategories from "./pages/home/FeaturedCategories";
+import PopularProducts from "./pages/home/FeaturedProducts";
+import NewsletterSection from "./pages/home/NewsletterSection";
+import WhyChooseUs from "./pages/Home/WhyChooseUs";
+import Product from "./pages/product/Product";
+import About from "./pages/About/About";
+import Contact from "./pages/Contact/Contact";
+import Login from "./pages/Login/Login";
+import Register from "./pages/Register/Register";
+import Cart from "./pages/Cart/Cart";
+import Wishlist from "./pages/Wishlist/Wishlist";
+import Category from "./pages/Category/Category";
 
 function App() {
+  const location = useLocation();
+
+  // ✅ Hide layout for these routes
+  const hideLayoutRoutes = ["/login", "/register"];
+  const shouldHideLayout = hideLayoutRoutes.includes(location.pathname);
+
   return (
     <div>
-      <HeaderBar />
-      <Navbar />
+      {/* ✅ Show Header & Navbar only if not on login/register page */}
+      {!shouldHideLayout && <HeaderBar />}
+      {!shouldHideLayout && <Navbar />}
+
       <main className="min-h-screen">
         <Routes>
           <Route
@@ -51,7 +57,9 @@ function App() {
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </main>
-      <Footer />
+
+      {/* ✅ Hide Footer on login/register too */}
+      {!shouldHideLayout && <Footer />}
     </div>
   );
 }
