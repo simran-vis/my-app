@@ -10,7 +10,7 @@ import PopularProducts from "./pages/home/FeaturedProducts";
 import NewsletterSection from "./pages/home/NewsletterSection";
 import WhyChooseUs from "./pages/Home/WhyChooseUs";
 import Product from "./pages/product/Product";
-import About from "./pages/About/About";
+import About from "./pages/about/About";
 import Contact from "./pages/Contact/Contact";
 import Login from "./pages/Login/Login";
 import Cart from "./pages/Cart/Cart";
