@@ -1,64 +1,94 @@
+
 import { useState } from "react";
-import { Star, Minus, Plus, ShoppingCart } from "lucide-react";
+import { Minus, Plus } from "lucide-react";
+import FeaturedProducts from "../home/FeaturedProducts";
+
+const thumbnails = [
+  "https://cdn01.pharmeasy.in/dam/products_otc/J41613/livogen-iron-strawberry-flavour-gummies-for-kids-and-adults-bottle-30-nos-6.01-1755690889.jpg?dim=1440x0",
+  "https://images.unsplash.com/photo-1502741338009-cac2772e18bc",
+  "https://images.unsplash.com/photo-1519864605495-cac20749e3f1",
+  "https://images.unsplash.com/photo-1465101046530-73398c7f28ca",
+];
 
 export default function ProductDetails() {
-  // ================= IMAGE STATE =================
-  const [mainImage, setMainImage] = useState(      "https://cdn01.pharmeasy.in/dam/products_otc/J41613/livogen-iron-strawberry-flavour-gummies-for-kids-and-adults-bottle-30-nos-6.01-1755690889.jpg?dim=1440x0",
-);
-
-  const thumbnails = [
-         "https://cdn01.pharmeasy.in/dam/products_otc/J41613/livogen-iron-strawberry-flavour-gummies-for-kids-and-adults-bottle-30-nos-6.01-1755690889.jpg?dim=1440x0",
-      "https://cdn01.pharmeasy.in/dam/products_otc/J41613/livogen-iron-strawberry-flavour-gummies-for-kids-and-adults-bottle-30-nos-6.01-1755690889.jpg?dim=1440x0",
-      "https://cdn01.pharmeasy.in/dam/products_otc/J41613/livogen-iron-strawberry-flavour-gummies-for-kids-and-adults-bottle-30-nos-6.01-1755690889.jpg?dim=1440x0",
-      "https://cdn01.pharmeasy.in/dam/products_otc/J41613/livogen-iron-strawberry-flavour-gummies-for-kids-and-adults-bottle-30-nos-6.01-1755690889.jpg?dim=1440x0",
-
-  ];
+  const [mainImage, setMainImage] = useState(thumbnails[0]);
+  const [qty, setQty] = useState(1);
 
   return (
-    <div className="w-full px-4 mt-10 md:px-10 py-10 bg-[#f8fafc]">
+    <div>
+    <div className="w-full mt-10 px-6 py-10 bg-[#f8fafc] h-screen">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 h-full">
 
-      {/* ============================ MAIN WRAPPER ============================ */}
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10">
-
-        {/* ========================== LEFT — FIXED IMAGE ========================== */}
-        <div className="sticky top-24 h-fit">
-          <div className="bg-white shadow-xl rounded-3xl p-6 border border-gray-100">
-            <img
-              src={mainImage}
-              alt="Product"
-              className="rounded-2xl w-full object-cover"
-            />
-          </div>
-
+        {/* LEFT SECTION - Sticky Image + Thumbnails */}
+        <div className="flex gap-6">
           {/* Thumbnails */}
-          <div className="flex gap-4 mt-4">
+          <div className="flex flex-col gap-4 sticky top-24">
             {thumbnails.map((img) => (
               <div
                 key={img}
                 onClick={() => setMainImage(img)}
                 className={`
-                  w-20 h-20 rounded-xl border p-1 cursor-pointer transition 
-                  hover:scale-105 
-                  ${
-                    mainImage === img
-                      ? "border-blue-500 shadow-lg"
-                      : "border-gray-300"
-                  }
+                  w-20 h-20 border rounded-xl cursor-pointer p-1 transition-all
+                  ${mainImage === img
+                    ? "border-blue-600 shadow-md"
+                    : "border-gray-300 hover:border-gray-400 hover:scale-105"}
                 `}
               >
                 <img
                   src={img}
                   className="w-full h-full object-cover rounded-lg"
+                  alt="Product Thumbnail"
                 />
               </div>
             ))}
           </div>
+
+          {/* Main Image + Badge + Actions */}
+          <div className="relative sticky top-24">
+            <span className="absolute top-2 right-2 bg-red-600 text-white text-sm px-3 py-1 rounded-full shadow-md font-semibold">
+              20% OFF
+            </span>
+
+            <img
+              src={mainImage}
+              className="w-[400px] h-80 object-cover rounded-2xl bg-[#f9fafc] transition-transform duration-300 hover:scale-105 cursor-pointer"
+              alt="Product"
+            />
+
+            <div className="mt-4 flex flex-col gap-3">
+              <p className="text-3xl font-bold text-blue-600 whitespace-nowrap">
+                $12.99
+              </p>
+
+              <div className="flex items-center justify-between gap-4">
+                <div className="flex items-center border border-[#1193d4] rounded-lg overflow-hidden">
+                  <button
+                    onClick={() => setQty((q) => Math.max(1, q - 1))}
+                    className="px-1 py-2 hover:bg-gray-100"
+                  >
+                    <Minus size={16} />
+                  </button>
+
+                  <span className="px-2 text-lg font-semibold">{qty}</span>
+
+                  <button
+                    onClick={() => setQty((q) => q + 1)}
+                    className="px-1 py-2 hover:bg-gray-100"
+                  >
+                    <Plus size={16} />
+                  </button>
+                </div>
+
+                <button className="bg-blue-600 text-white py-2 px-6 -mt-20 rounded-xl whitespace-nowrap transform transition-all duration-200 hover:scale-105 hover:shadow-md">
+                  Add to Cart
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
 
-        {/* ========================== RIGHT — CONTENT ========================== */}
-        <div className="space-y-8">
-
-          {/* PRODUCT TITLE + REVIEWS */}
+        {/* RIGHT SECTION - Scrollable Content */}
+        <div className="space-y-8 overflow-y-auto pr-4 scrollbar-thin h-full">
           <div>
             <h1 className="text-3xl font-bold text-gray-900">
               Paracetamol 500mg Tablets
@@ -66,120 +96,45 @@ export default function ProductDetails() {
             <p className="text-sm text-gray-500 mt-1">(125 Reviews)</p>
           </div>
 
-          {/* PRICE + ADD TO CART */}
-          <div className="bg-white p-6 rounded-2xl shadow-lg border border-gray-100">
-            <p className="text-3xl font-bold text-blue-600">$12.99</p>
-
-            <div className="flex items-center gap-4 mt-4">
-              <button className="px-3 py-2 border rounded-lg">-</button>
-              <span>1</span>
-              <button className="px-3 py-2 border rounded-lg">+</button>
-
-              <button className="flex-1 bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-xl shadow-lg transition">
-                Add to Cart
-              </button>
-            </div>
-
-            {/* PRODUCT CODE */}
-            <div className="mt-4 text-sm text-gray-600 border-t pt-3">
-              <p>
-                <span className="font-semibold text-gray-800">
-                  Product Code:
-                </span>{" "}
-                MED-PARA-500
-              </p>
-            </div>
-
-            {/* badges */}
-            <div className="flex gap-6 mt-3 text-sm text-gray-600">
-              <div className="flex items-center gap-1">✔ FDA Approved</div>
-              <div className="flex items-center gap-1">✔ Pharmacist Recommended</div>
-            </div>
-          </div>
-
-          {/* ========================== DOSAGE INFO ========================== */}
-          <div className="bg-white p-6 rounded-2xl shadow-lg border border-gray-100">
-            <h2 className="text-xl font-semibold mb-3">Dosage Information</h2>
-            <ul className="list-disc ml-5 space-y-2 text-gray-700">
-              <li><b>Adults:</b> 1–2 tablets every 4 to 6 hours.</li>
-              <li>Do not exceed more than 8 tablets in 24 hours.</li>
-              <li>Not recommended for children under 12 years.</li>
-              <li>Always read the leaflet.</li>
+          <div className="space-y-3 text-gray-700 leading-relaxed">
+            <p>
+              Paracetamol is widely used for pain relief and fever reduction.
+              Works effectively for headaches, body aches, and cold symptoms.
+            </p>
+            <ul className="list-disc ml-6 space-y-1">
+              <li>Fast pain relief</li>
+              <li>Safe for adults when taken as directed</li>
+              <li>Clinically tested formula</li>
             </ul>
           </div>
 
-          {/* ========================== HOW IT WORKS ========================== */}
-          <div className="bg-white p-6 rounded-2xl shadow-xl border border-gray-100">
-            <h2 className="text-xl font-semibold mb-3">How It Works</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <img src="/images/how.png" className="rounded-xl shadow" />
-
-              <div className="space-y-4">
-                <div>
-                  <h3 className="font-semibold">Step 1: Ingestion</h3>
-                  <p className="text-gray-600 text-sm">Take one tablet with water.</p>
-                </div>
-                <div>
-                  <h3 className="font-semibold">Step 2: Absorption</h3>
-                  <p className="text-gray-600 text-sm">
-                    Absorbed quickly into bloodstream.
-                  </p>
-                </div>
-                <div>
-                  <h3 className="font-semibold">Step 3: Action</h3>
-                  <p className="text-gray-600 text-sm">
-                    Reduces fever & provides pain relief.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* ========================== DETAILS ACCORDION ========================== */}
           <div className="space-y-4">
-            {["Full Ingredients", "Usage Instructions", "Warnings"].map(
-              (item) => (
-                <div
-                  key={item}
-                  className="bg-white p-4 rounded-xl shadow border border-gray-100 cursor-pointer hover:bg-gray-50"
-                >
-                  <div className="flex justify-between items-center">
-                    <span className="font-semibold">{item}</span>
-                    <span>⌄</span>
-                  </div>
-                </div>
-              )
-            )}
+            {["Full Ingredients", "Usage Instructions", "Doses", "How It Works", "Warnings"].map((title, idx) => (
+              <details key={idx} className="border p-4 rounded-xl">
+                <summary className="cursor-pointer font-semibold">{title}</summary>
+                <p className="mt-2 text-gray-600">
+                  {title === "Full Ingredients" &&
+                    "Paracetamol 500mg, Microcrystalline Cellulose, Starch, Magnesium Stearate."}
+                  {title === "Usage Instructions" &&
+                    "Take 1-2 tablets with water as needed. Do not exceed 8 tablets in 24 hours."}
+                  {title === "Doses" &&
+                    "Adults: 500mg-1000mg every 4-6 hours as needed. Children: Follow pediatrician guidance."}
+                  {title === "How It Works" &&
+                    "Paracetamol works by blocking the production of prostaglandins in the brain which are chemicals that cause pain and fever."}
+                  {title === "Warnings" &&
+                    "Avoid exceeding the recommended dose. Not suitable for patients with liver disease. Consult a doctor if pregnant or breastfeeding."}
+                </p>
+              </details>
+            ))}
           </div>
         </div>
+
       </div>
-
-      {/* ========================== RELATED PRODUCTS ========================== */}
-      <div className="mt-16">
-        <h2 className="text-xl font-semibold mb-6">Related Products</h2>
-
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {[
-            { name: "Vitamin C Tablets", price: "$8.50", img: "vitc.png" },
-            { name: "Cough Syrup", price: "$15.20", img: "cough.png" },
-            { name: "Pain Relief Gel", price: "$11.75", img: "gel.png" },
-            { name: "Hand Sanitizer", price: "$4.99", img: "sanitizer.png" },
-          ].map((p) => (
-            <div
-              key={p.name}
-              className="bg-white p-4 rounded-2xl shadow border hover:shadow-xl transition"
-            >
-              <img
-                src={`/images/${p.img}`}
-                className="h-40 w-full object-cover rounded-xl"
-              />
-              <h3 className="font-semibold mt-3">{p.name}</h3>
-              <p className="text-blue-600 font-bold">{p.price}</p>
-            </div>
-          ))}
-        </div>
+    </div>
+    <div className="mt-2">
+        <h2 className="text-2xl font-bold text-gray-900 mb-6">Related Products</h2>
+        <FeaturedProducts columns="md:grid-cols-5" />
       </div>
-
     </div>
   );
 }
