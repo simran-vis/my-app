@@ -16,6 +16,7 @@ import Login from "./pages/Login/Login";
 import Cart from "./pages/Cart/Cart";
 import Wishlist from "./pages/Wishlist/Wishlist";
 import Category from "./pages/Category/Category";
+import ProductDetails from "./pages/product/ProductDetails.";
 
 function App() {
   const location = useLocation();
@@ -39,13 +40,14 @@ function App() {
                 <HeroSection />
                 <ServiceSection />
                 <FeaturedCategories />
-                <PopularProducts />
+                <PopularProducts columns="lg:grid-cols-6" />
                 <NewsletterSection />
                 <WhyChooseUs />
               </div>
             }
           />
           <Route path="/product" element={<Product />} />
+          <Route path="/productdetails" element={<ProductDetails />} />
           <Route path="/about" element={<About />} />
           <Route path="/category" element={<Category />} />
           <Route path="/contact" element={<Contact />} />

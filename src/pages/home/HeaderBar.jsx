@@ -3,7 +3,7 @@ import { Phone, Mail, Globe } from "lucide-react";
 
 const HeaderBar = () => {
   return (
-    <div className="bg-[#1193d4] text-white py-2 sticky top-0 z-50 min-h-[48px] overflow-hidden relative">
+<div className="bg-[#1193d4] text-white py-2 fixed top-0 left-0 w-full z-50 min-h-[48px] overflow-hidden">
       {/* 🌐 Fixed language selector on right side */}
       <div className="absolute right-4 top-1/2 -translate-y-1/2 flex items-center space-x-2 z-50 bg-[#fff] px-2 py-1 rounded-lg shadow-md">
         <Globe className="h-5 w-5 text-[#1193d4]" />

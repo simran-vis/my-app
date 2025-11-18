@@ -1,7 +1,6 @@
 
 import React from 'react';
 
-// Replace these URLs with your own category images
 const categories = [
   { 
     name: 'Vitamins', 
@@ -35,29 +34,29 @@ const categories = [
   },
 ];
 
-
 const ShopByCategory = () => {
   return (
-    <div className="bg-blue-50 py-12 px-4">
+    <div className="bg-blue-50 py-12 px-2 sm:px-4">
       <div className="max-w-7xl mx-auto text-center">
-        <h2 className="text-3xl font-bold mb-2">Shop by Category</h2>
-        <p className="text-gray-600 mb-8">
+        <h2 className="text-2xl sm:text-3xl font-bold mb-2">Shop by Category</h2>
+        <p className="text-gray-600 mb-8 text-sm sm:text-base">
           Browse our wide range of healthcare products and medicines organized by categories
         </p>
 
-        <div className="flex flex-wrap justify-center gap-6">
+        {/* Grid layout */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 sm:gap-6 justify-items-center">
           {categories.map((category, index) => (
             <div
               key={index}
-              className="bg-white p-4 rounded-lg shadow-md flex flex-col items-center w-40 hover:shadow-xl transition-shadow duration-300"
+              className="bg-white p-2 sm:p-4 rounded-lg shadow-md flex flex-col items-center w-28 sm:w-40 hover:shadow-xl transition-shadow duration-300"
             >
               <img
                 src={category.image}
                 alt={category.name}
-                className="w-24 h-24 object-cover rounded-full mb-3"
+                className="w-16 h-16 sm:w-24 sm:h-24 object-cover rounded-full mb-2 sm:mb-3"
               />
-              <h3 className="text-lg font-semibold text-[#1193d4] mb-1">{category.name}</h3>
-              <p className="text-gray-500 text-sm">{category.products}</p>
+              <h3 className="text-xs sm:text-lg font-semibold text-[#1193d4] mb-0.5 sm:mb-1">{category.name}</h3>
+              <p className="text-gray-500 text-[10px] sm:text-sm">{category.products}</p>
             </div>
           ))}
         </div>
