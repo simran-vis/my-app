@@ -2,11 +2,13 @@
 
 import { useState } from 'react';
 import { Heart, Mail, Lock, User, CheckCircle, Phone } from 'lucide-react';
+import { loginUser, registerUser } from '../../services/authApi';
 
 function Login() {
   const [activeTab, setActiveTab] = useState('login');
   const [formData, setFormData] = useState({
     fullName: '',
+      phone: '',
     email: '',
     password: '',
     confirmPassword: '',
@@ -19,14 +21,46 @@ function Login() {
     });
   };
 
-  const handleLogin = (e) => {
+   const handleRegister = async (e) => {
     e.preventDefault();
-    console.log('Login:', { email: formData.email, password: formData.password });
+
+    const payload = {
+      name: formData.fullName,
+      phone: formData.phone,
+      email: formData.email,
+      password: formData.password,
+      confirmPassword: formData.confirmPassword,
+    };
+
+    const res = await registerUser(payload);
+
+    console.log("Register Response:", res);
+
+    if (res) {
+      alert("Registration Successful!");
+      localStorage.setItem("token", res.token);
+    }
   };
 
-  const handleRegister = (e) => {
+  // -------------------------
+  // LOGIN API HANDLER
+  // -------------------------
+  const handleLogin = async (e) => {
     e.preventDefault();
-    console.log('Register:', formData);
+
+    const payload = {
+      email: formData.email,
+      password: formData.password,
+    };
+
+    const res = await loginUser(payload);
+
+    console.log("Login Response:", res);
+
+    if (res) {
+      alert("Login Successful!");
+      localStorage.setItem("token", res.token);
+    }
   };
 
   return (

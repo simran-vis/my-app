@@ -13,10 +13,11 @@ import Product from "./pages/product/Product";
 import About from "./pages/about/About";
 import Contact from "./pages/Contact/Contact";
 import Login from "./pages/Login/Login";
-import Cart from "./pages/Cart/Cart";
+import Cart from "./pages/cart/Cart";
 import Wishlist from "./pages/Wishlist/Wishlist";
-import Category from "./pages/Category/Category";
+import HealthServices from "./pages/healthServices/HealthServices";
 import ProductDetails from "./pages/product/ProductDetails.";
+import ShippingInformation from "./pages/cart/ShippingInformation";
 
 function App() {
   const location = useLocation();
@@ -49,10 +50,11 @@ function App() {
           <Route path="/product" element={<Product />} />
           <Route path="/productdetails" element={<ProductDetails />} />
           <Route path="/about" element={<About />} />
-          <Route path="/category" element={<Category />} />
+          <Route path="/HealthServices" element={<HealthServices />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/login" element={<Login />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/shipping-form" element={<ShippingInformation />} />
           <Route path="/wishlist" element={<Wishlist />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>

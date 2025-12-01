@@ -1,6 +1,8 @@
 
 import React, { useState, useEffect } from 'react';
 import { Upload } from 'lucide-react';
+import { uploadPrescription } from '../../services/prescriptionApi';
+
 
 const HeroSection = () => {
   const slides = [
@@ -22,6 +24,25 @@ const HeroSection = () => {
   ];
 
   const [currentSlide, setCurrentSlide] = useState(0);
+const [uploading, setUploading] = useState(false);
+
+const handleFileUpload = async (e) => {
+  const file = e.target.files[0];
+  if (!file) return;
+
+  setUploading(true);
+
+  const response = await uploadPrescription(file);
+
+  setUploading(false);
+
+  if (response) {
+    alert("Prescription uploaded successfully!");
+    console.log("Server Response:", response);
+  } else {
+    alert("Failed to upload prescription.");
+  }
+};
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -69,11 +90,29 @@ const HeroSection = () => {
               </div>
             </div>
 
-            {/* Upload Prescription Button */}
-            <button className="flex items-center px-6 py-3 bg-[#1193d4] text-white rounded-md hover:bg-[#0e80b3] hover:scale-105 transition-all duration-200">
-              <Upload className="h-5 w-5 mr-2" />
-              Upload Prescription
-            </button>
+{/* Upload Prescription Button */}
+<button
+  onClick={() => document.getElementById("fileUpload").click()}
+  className="flex items-center px-6 py-3 bg-[#1193d4] text-white rounded-md hover:bg-[#0e80b3] hover:scale-105 transition-all duration-200"
+  disabled={uploading}
+>
+  <Upload className="h-5 w-5 mr-2" />
+  {uploading ? "Uploading..." : "Upload Prescription"}
+</button>
+
+{/* Hidden File Input */}
+<input
+  id="fileUpload"
+  type="file"
+  accept="image/*"
+  capture="environment"
+  className="hidden"
+  onChange={handleFileUpload}
+/>
+
+
+
+
           </div>
 
           {/* Right Side Image - Automatically Changing */}
