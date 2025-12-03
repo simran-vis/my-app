@@ -1,5 +1,9 @@
 
 import React from "react";
+import { useNavigate } from "react-router-dom";
+import { useCart } from "../../context/CartContext";
+
+
 
 const products = [
   {
@@ -204,6 +208,9 @@ const products = [
 ];
 
 const FeaturedProducts = ({columns = "md:grid-cols-4" }) => {
+    const navigate = useNavigate();   // ✅ MUST HAVE INSIDE COMPONENT
+const { addToCart, message } = useCart();
+
   return (
     <div className="container mx-auto py-8 px-4 bg-gray-50">
       {/* Header */}
@@ -214,12 +221,13 @@ const FeaturedProducts = ({columns = "md:grid-cols-4" }) => {
             Discover our most popular and trusted healthcare products
           </p>
         </div>
-        <a
-          href="#"
-          className="text-blue-500 hover:underline ml-4 whitespace-nowrap text-sm sm:text-base"
-        >
-          View All &gt;
-        </a>
+      <a
+  onClick={() => navigate("/product")}
+  className="text-blue-500 hover:underline ml-4 whitespace-nowrap text-sm sm:text-base cursor-pointer"
+>
+  View All &gt;
+</a>
+
       </div>
 
       {/* Grid */}
@@ -236,6 +244,7 @@ const FeaturedProducts = ({columns = "md:grid-cols-4" }) => {
     <img
       src={p.image}
       alt={p.name}
+      onClick={() => navigate("/productdetails")}
       className="w-20 h-20 object-contain rounded-md flex-shrink-0 
                  md:w-full md:h-32"
     />
@@ -263,8 +272,10 @@ const FeaturedProducts = ({columns = "md:grid-cols-4" }) => {
   </div>
 
   {/* Add Button */}
-  <button className="text-white bg-[#1193d4] w-full py-1.5 rounded-md text-xs hover:bg-[#0e80b3] hover:scale-105 transition-transform duration-200">
-    Add
+  <button
+  onClick={() => addToCart(p)}
+  className="text-white bg-[#1193d4] w-full py-1.5 rounded-md text-xs hover:bg-[#0e80b3] hover:scale-105 transition-transform duration-200">
+    Add to card
   </button>
 </div>
   ))}

@@ -32,6 +32,36 @@ const categories = [
     products: '75 products', 
     image: 'https://plus.unsplash.com/premium_photo-1677860447055-5ce8092c0d7e?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Rmlyc3QlMjBBaWR8ZW58MHx8MHx8fDA%3D' 
   },
+    { 
+    name: 'Cold & Flu', 
+    products: '60 products', 
+    image: 'https://media.istockphoto.com/id/1135175362/photo/sick-woman-blowing-her-nose-she-covered-with-blanket.webp?a=1&b=1&s=612x612&w=0&k=20&c=rSnh2NktDGLzB3VT9LQKDtDYu_XCu2IK5bEHJZzgmJw=' 
+  },
+  { 
+    name: 'First Aid', 
+    products: '75 products', 
+    image: 'https://plus.unsplash.com/premium_photo-1677860447055-5ce8092c0d7e?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Rmlyc3QlMjBBaWR8ZW58MHx8MHx8fDA%3D' 
+  },
+    { 
+    name: 'Cold & Flu', 
+    products: '60 products', 
+    image: 'https://media.istockphoto.com/id/1135175362/photo/sick-woman-blowing-her-nose-she-covered-with-blanket.webp?a=1&b=1&s=612x612&w=0&k=20&c=rSnh2NktDGLzB3VT9LQKDtDYu_XCu2IK5bEHJZzgmJw=' 
+  },
+  { 
+    name: 'First Aid', 
+    products: '75 products', 
+    image: 'https://plus.unsplash.com/premium_photo-1677860447055-5ce8092c0d7e?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Rmlyc3QlMjBBaWR8ZW58MHx8MHx8fDA%3D' 
+  },
+    { 
+    name: 'Cold & Flu', 
+    products: '60 products', 
+    image: 'https://media.istockphoto.com/id/1135175362/photo/sick-woman-blowing-her-nose-she-covered-with-blanket.webp?a=1&b=1&s=612x612&w=0&k=20&c=rSnh2NktDGLzB3VT9LQKDtDYu_XCu2IK5bEHJZzgmJw=' 
+  },
+  { 
+    name: 'First Aid', 
+    products: '75 products', 
+    image: 'https://plus.unsplash.com/premium_photo-1677860447055-5ce8092c0d7e?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Rmlyc3QlMjBBaWR8ZW58MHx8MHx8fDA%3D' 
+  },
 ];
 
 const ShopByCategory = () => {

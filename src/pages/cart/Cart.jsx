@@ -10,54 +10,19 @@ import {
 } from "lucide-react";
 import { Icon } from "@iconify/react";
 import ShippingInformation from "./ShippingInformation";
+import { useCart } from "../../context/CartContext";
+
 
 
 const Cart = () => {
 const [showPopup, setShowPopup] = useState(false);
 const [address, setAddress] = useState(null);
+const { cart } = useCart();
+const total = cart.reduce(
+  (acc, item) => acc + item.price * (item.quantity || 1),
+  0
+);
 
-
-  const cartItems = [
-    {
-      id: 1,
-      name: "Paracetamol 500mg",
-      mrp: 120,
-      price: 99,
-      quantity: 2,
-      delivery: "Delivery by Tomorrow",
-      image:       "https://cdn01.pharmeasy.in/dam/products_otc/J41613/livogen-iron-strawberry-flavour-gummies-for-kids-and-adults-bottle-30-nos-6.01-1755690889.jpg?dim=1440x0",
-
-      discount: Math.round(((120 - 99) / 120) * 100),
-
-    },
-    {
-      id: 2,
-      name: "Ibuprofen 200mg",
-      mrp: 150,
-      price: 129,
-  discount: Math.round(((120 - 99) / 120) * 100),
-      quantity: 1,
-      delivery: "Delivery in 2 Days",
-      image:      "https://images.unsplash.com/photo-1631549916768-4119b2e5f926?ixlib=rb-4.1.0&auto=format&fit=crop&q=80&w=1479",
-
-    },
-    {
-      id: 3,
-      name: "Vitamin C 1000mg",
-      mrp: 300,
-      price: 249,
-      discount: 17,
-      quantity: 1,
-      delivery: "Delivery by Tomorrow",
-      prescription: true,
-      image:       "https://images.unsplash.com/photo-1631549916768-4119b2e5f926?ixlib=rb-4.1.0&auto=format&fit=crop&q=80&w=1479",
-    },
-  ];
-
-  const total = cartItems.reduce(
-    (acc, item) => acc + item.price * item.quantity,
-    0
-  );
 
   return (
     <div className="w-full mt-10 bg-neutral-light min-h-screen py-10">
@@ -123,7 +88,7 @@ const [address, setAddress] = useState(null);
 
           {/* Left - Cart Items */}
           <div className="lg:col-span-2 space-y-4">
-            {cartItems.map((item) => (
+            {cart.map((item) => (
               <div
                 key={item.id}
                 className="bg-white p-3 rounded-lg  hover:shadow-md transition-all duration-300 flex flex-col md:flex-row gap-4 shadow-sm border border-gray-200"

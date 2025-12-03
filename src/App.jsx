@@ -18,6 +18,7 @@ import Wishlist from "./pages/Wishlist/Wishlist";
 import HealthServices from "./pages/healthServices/HealthServices";
 import ProductDetails from "./pages/product/ProductDetails.";
 import ShippingInformation from "./pages/cart/ShippingInformation";
+import { CartProvider } from "./context/CartContext";
 
 function App() {
   const location = useLocation();
@@ -27,6 +28,7 @@ function App() {
   const shouldHideLayout = hideLayoutRoutes.includes(location.pathname);
 
   return (
+    <CartProvider> 
     <div>
       {/* ✅ Show Header & Navbar only if not on login/register page */}
       {!shouldHideLayout && <HeaderBar />}
@@ -63,6 +65,7 @@ function App() {
       {/* ✅ Hide Footer on login/register too */}
       {!shouldHideLayout && <Footer />}
     </div>
+    </CartProvider>
   );
 }
 
