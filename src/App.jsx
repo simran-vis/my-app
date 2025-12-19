@@ -18,7 +18,11 @@ import Wishlist from "./pages/Wishlist/Wishlist";
 import HealthServices from "./pages/healthServices/HealthServices";
 import ProductDetails from "./pages/product/ProductDetails.";
 import ShippingInformation from "./pages/cart/ShippingInformation";
+import LabTest from "./pages/healthServices/LabTest";
+
 import { CartProvider } from "./context/CartContext";
+import LabDetailsPage from "./pages/healthServices/LabDetailsPage";
+
 
 function App() {
   const location = useLocation();
@@ -58,6 +62,10 @@ function App() {
           <Route path="/cart" element={<Cart />} />
           <Route path="/shipping-form" element={<ShippingInformation />} />
           <Route path="/wishlist" element={<Wishlist />} />
+          <Route path="/labtest" element={<LabTest />} />
+          <Route path="/labtest/:id" element={<LabDetailsPage />} />
+
+
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </main>

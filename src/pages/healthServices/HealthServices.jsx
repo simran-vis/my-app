@@ -1,6 +1,9 @@
 import { Stethoscope, Video, ShieldCheck, ClipboardCheck, Home, BadgeCheck, FileText } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 export default function HealthServices() {
+  const navigate = useNavigate();
+
   return (
     <div className="w-full bg-[#F2F7FB] py-16 px-6">
      
@@ -51,7 +54,9 @@ export default function HealthServices() {
 
 
   {/* CTA button */}
-  <button className="mt-8 w-full bg-[#0094E8] text-white py-3 rounded-lg font-medium hover:bg-[#027BC8] transition">
+  <button className="mt-8 w-full bg-[#0094E8] text-white py-3 rounded-lg font-medium hover:bg-[#027BC8] transition"
+  onClick={() => navigate("/labtest")}
+  >
     Book Lab Test
   </button>
 
