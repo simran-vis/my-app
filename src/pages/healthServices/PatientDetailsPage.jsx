@@ -1,141 +1,195 @@
-import React, { useState } from "react";
-import { User, MapPin } from "lucide-react";
+import { useState } from "react";
 
-const PatientDetailsPage = () => {
-  const [gender, setGender] = useState("Male");
+export default function PatientDetails({ onNext }) {
+  const [gender, setGender] = useState("male");
+  const [fullName, setFullName] = useState("");
+  const [mobile, setMobile] = useState("");
+  const [email, setEmail] = useState("");
+  const [age, setAge] = useState("");
+  const [address, setAddress] = useState("");
+  const [city, setCity] = useState("");
+  const [state, setStateName] = useState("");
+  const [zipcode, setZipcode] = useState("");
+  const [country, setCountry] = useState("");
+
+  
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
-      <div className="max-w-4xl mx-auto bg-white rounded-xl shadow-sm px-6 py-6">
+    <div className="w-full max-w-xl mx-auto p-6 rounded-xl">
 
-        {/* Header */}
-        <div className="flex justify-between items-start mb-6">
-          <div>
-            <h2 className="text-xl font-semibold">Patient Details</h2>
-            <p className="text-gray-500 text-sm">
-              Enter patient information for the test
-            </p>
-          </div>
+      {/* Title */}
+      <h2 className="text-xl font-bold mb-4">Patient Details</h2>
 
-          <button className="flex items-center gap-2 text-sm px-3 py-1.5 border rounded-md text-blue-600 hover:bg-blue-50">
-            <User size={15} />
-            Auto-fill
-          </button>
+      {/* Name & Mobile */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-3">
+        <div>
+          <label className="block font-medium mb-1 text-gray-600 text-sm">
+            Full Name
+          </label>
+          <input
+            type="text"
+            className="w-full px-3 py-2 rounded-md bg-gray-80 border border-[#1193d4]
+            text-sm focus:outline-[#1193d4] focus:ring-1 focus:ring-[#1193d4]"
+            placeholder="Enter full name"
+            onChange={(e) => setFullName(e.target.value)}
+          />
         </div>
 
-        {/* FORM */}
-        <div className="space-y-5">
-
-          {/* ROW 1 */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div>
-              <label className="text-sm font-medium">
-                Full Name <span className="text-red-500">*</span>
-              </label>
-              <input
-                type="text"
-                placeholder="Full name"
-                className="w-full mt-1 border rounded-md px-3 py-2 text-sm"
-              />
-            </div>
-
-            <div>
-              <label className="text-sm font-medium">
-                Phone <span className="text-red-500">*</span>
-              </label>
-              <input
-                type="tel"
-                placeholder="+91 9876543210"
-                className="w-full mt-1 border rounded-md px-3 py-2 text-sm"
-              />
-            </div>
-
-            <div>
-              <label className="text-sm font-medium">
-                Email <span className="text-red-500">*</span>
-              </label>
-              <input
-                type="email"
-                placeholder="email@example.com"
-                className="w-full mt-1 border rounded-md px-3 py-2 text-sm"
-              />
-            </div>
-          </div>
-
-          {/* ROW 2 */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div>
-              <label className="text-sm font-medium">
-                Age <span className="text-red-500">*</span>
-              </label>
-              <input
-                type="number"
-                placeholder="Age"
-                className="w-full mt-1 border rounded-md px-3 py-2 text-sm"
-              />
-            </div>
-
-            <div>
-              <label className="text-sm font-medium mb-1 block">
-                Gender <span className="text-red-500">*</span>
-              </label>
-              <div className="flex gap-4 mt-2">
-                {["Male", "Female", "Other"].map((g) => (
-                  <label key={g} className="flex items-center gap-1 text-sm">
-                    <input
-                      type="radio"
-                      checked={gender === g}
-                      onChange={() => setGender(g)}
-                    />
-                    {g}
-                  </label>
-                ))}
-              </div>
-            </div>
-
-            <div>
-              <label className="text-sm font-medium">
-                Address <span className="text-red-500">*</span>
-              </label>
-              <input
-                type="text"
-                placeholder="House no, street, area"
-                className="w-full mt-1 border rounded-md px-3 py-2 text-sm"
-              />
-            </div>
-          </div>
-
-          {/* ADDRESS DETAILS */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <input
-              type="text"
-              placeholder="City"
-              className="border rounded-md px-3 py-2 text-sm"
-            />
-            <select className="border rounded-md px-3 py-2 text-sm">
-              <option>State</option>
-              <option>Maharashtra</option>
-              <option>Delhi</option>
-              <option>Karnataka</option>
-            </select>
-            <input
-              type="text"
-              placeholder="Pincode"
-              className="border rounded-md px-3 py-2 text-sm"
-            />
-          </div>
-
-          {/* CTA */}
-          <div className="flex justify-end pt-4">
-            <button className="bg-blue-600 text-white px-6 py-2 rounded-md text-sm font-medium hover:bg-blue-700">
-              Proceed to Payment →
-            </button>
-          </div>
-
+        <div>
+          <label className="block font-medium mb-1 text-gray-600 text-sm">
+            Mobile Number
+          </label>
+          <input
+            type="text"
+            className="w-full px-3 py-2 rounded-md bg-gray-80 border border-[#1193d4]
+            text-sm focus:outline-[#1193d4] focus:ring-1 focus:ring-[#1193d4]"
+            placeholder="Enter mobile number"
+            onChange={(e) => setMobile(e.target.value)}
+          />
         </div>
       </div>
+
+      {/* Email & Age */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-3">
+        <div>
+          <label className="block font-medium mb-1 text-gray-600 text-sm">
+            Email
+          </label>
+          <input
+            type="email"
+            className="w-full px-3 py-2 rounded-md bg-gray-80 border border-[#1193d4]
+            text-sm focus:outline-[#1193d4] focus:ring-1 focus:ring-[#1193d4]"
+            placeholder="Enter email"
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </div>
+
+        <div>
+          <label className="block font-medium mb-1 text-gray-600 text-sm">
+            Age
+          </label>
+          <input
+            type="number"
+            className="w-full px-3 py-2 rounded-md bg-gray-80 border border-[#1193d4]
+            text-sm focus:outline-[#1193d4] focus:ring-1 focus:ring-[#1193d4]"
+            placeholder="Age"
+            onChange={(e) => setAge(e.target.value)}
+          />
+        </div>
+      </div>
+
+      {/* Gender */}
+      <div className="mb-4">
+        <label className="block font-medium mb-2 text-gray-600 text-sm">
+          Gender
+        </label>
+        <div className="flex gap-4 text-sm">
+          {["male", "female", "other"].map((g) => (
+            <label key={g} className="flex items-center gap-2 cursor-pointer">
+              <input
+                type="radio"
+                name="gender"
+                checked={gender === g}
+                onChange={() => setGender(g)}
+              />
+              <span className="capitalize">{g}</span>
+            </label>
+          ))}
+        </div>
+      </div>
+
+      {/* Address */}
+      <div className="mb-3">
+        <label className="block font-medium mb-1 text-gray-600 text-sm">
+          Address
+        </label>
+        <input
+          type="text"
+          className="w-full px-3 py-2 rounded-md bg-gray-80 border border-[#1193d4]
+          text-sm focus:outline-[#1193d4] focus:ring-1 focus:ring-[#1193d4]"
+          placeholder="House no, street, area"
+          onChange={(e) => setAddress(e.target.value)}
+        />
+      </div>
+
+      {/* City / State / Zip */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mb-3">
+        <div>
+          <label className="block font-medium mb-1 text-gray-600 text-sm">
+            City
+          </label>
+          <input
+            className="w-full px-3 py-2 rounded-md bg-gray-80 border border-[#1193d4]
+            text-sm focus:outline-[#1193d4] focus:ring-1 focus:ring-[#1193d4]"
+            placeholder="City"
+            onChange={(e) => setCity(e.target.value)}
+          />
+        </div>
+
+        <div>
+          <label className="block font-medium mb-1 text-gray-600 text-sm">
+            State
+          </label>
+          <input
+            className="w-full px-3 py-2 rounded-md bg-gray-80 border border-[#1193d4]
+            text-sm focus:outline-[#1193d4] focus:ring-1 focus:ring-[#1193d4]"
+            placeholder="State"
+            onChange={(e) => setStateName(e.target.value)}
+          />
+        </div>
+
+        <div>
+          <label className="block font-medium mb-1 text-gray-600 text-sm">
+            Zipcode
+          </label>
+          <input
+            className="w-full px-3 py-2 rounded-md bg-gray-80 border border-[#1193d4]
+            text-sm focus:outline-[#1193d4] focus:ring-1 focus:ring-[#1193d4]"
+            placeholder="Zipcode"
+            onChange={(e) => setZipcode(e.target.value)}
+          />
+        </div>
+      </div>
+
+      {/* Country */}
+      <div className="mb-6">
+        <label className="block font-medium mb-1 text-gray-600 text-sm">
+          Country
+        </label>
+        <input
+          className="w-full px-3 py-2 rounded-md bg-gray-80 border border-[#1193d4]
+          text-sm focus:outline-[#1193d4] focus:ring-1 focus:ring-[#1193d4]"
+          placeholder="Country"
+          onChange={(e) => setCountry(e.target.value)}
+        />
+      </div>
+
+      
+   {/* Preview Button */}
+     <div className="flex justify-center">
+        <button
+          type="button"
+          className="w-48 py-2 bg-[#1193d4] text-white rounded-md
+          text-sm font-semibold hover:bg-[#0e80b3]"
+          onClick={() =>
+            onNext({
+              fullName,
+              mobile,
+              email,
+              age,
+              gender,
+              address,
+              city,
+              state,
+              zipcode,
+              country,
+            })
+          }
+        >
+          Preview Details
+        </button>
+      </div>
+
     </div>
   );
-};
-
-export default PatientDetailsPage;
+}

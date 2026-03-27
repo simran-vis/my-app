@@ -22,6 +22,7 @@ import LabTest from "./pages/healthServices/LabTest";
 
 import { CartProvider } from "./context/CartContext";
 import LabDetailsPage from "./pages/healthServices/LabDetailsPage";
+import PaymentPage from "./pages/healthServices/PaymentPage";
 
 
 function App() {
@@ -64,6 +65,7 @@ function App() {
           <Route path="/wishlist" element={<Wishlist />} />
           <Route path="/labtest" element={<LabTest />} />
           <Route path="/labtest/:id" element={<LabDetailsPage />} />
+          <Route path="/payment" element={<PaymentPage />} />
 
 
           <Route path="*" element={<Navigate to="/" replace />} />

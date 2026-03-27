@@ -5,7 +5,7 @@ export default function HealthServices() {
   const navigate = useNavigate();
 
   return (
-    <div className="w-full bg-[#F2F7FB] py-16 px-6">
+    <div className="w-full bg-[#F2F7FB] py-32 px-6">
      
 
       {/* Cards Container */}

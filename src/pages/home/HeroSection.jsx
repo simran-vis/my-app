@@ -91,14 +91,17 @@ const handleFileUpload = async (e) => {
             </div>
 
 {/* Upload Prescription Button */}
-<button
-  onClick={() => document.getElementById("fileUpload").click()}
-  className="flex items-center px-6 py-3 bg-[#1193d4] text-white rounded-md hover:bg-[#0e80b3] hover:scale-105 transition-all duration-200"
-  disabled={uploading}
->
-  <Upload className="h-5 w-5 mr-2" />
-  {uploading ? "Uploading..." : "Upload Prescription"}
-</button>
+<div className="flex sm:justify-start justify-center">
+  <button
+    onClick={() => document.getElementById("fileUpload").click()}
+    className="flex items-center px-6 py-3 bg-[#1193d4] text-white rounded-md hover:bg-[#0e80b3] hover:scale-105 transition-all duration-200"
+    disabled={uploading}
+  >
+    <Upload className="h-5 w-5 mr-2" />
+    {uploading ? "Uploading..." : "Upload Prescription"}
+  </button>
+</div>
+
 
 {/* Hidden File Input */}
 <input
@@ -109,9 +112,6 @@ const handleFileUpload = async (e) => {
   className="hidden"
   onChange={handleFileUpload}
 />
-
-
-
 
           </div>
 

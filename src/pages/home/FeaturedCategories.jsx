@@ -66,27 +66,37 @@ const categories = [
 
 const ShopByCategory = () => {
   return (
-    <div className="bg-blue-50 py-12 px-2 sm:px-4">
+    <div className="bg-blue-50 py-10 px-3 sm:px-4">
       <div className="max-w-7xl mx-auto text-center">
-        <h2 className="text-2xl sm:text-3xl font-bold mb-2">Shop by Category</h2>
-        <p className="text-gray-600 mb-8 text-sm sm:text-base">
-          Browse our wide range of healthcare products and medicines organized by categories
+        <h2 className="text-xl sm:text-3xl font-bold mb-2">
+          Shop by Category
+        </h2>
+
+        <p className="text-gray-600 mb-6 text-xs sm:text-base max-w-xl mx-auto">
+          Browse our wide range of healthcare products and medicines
         </p>
 
-        {/* Grid layout */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 sm:gap-6 justify-items-center">
+        {/* Grid */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 sm:gap-6">
           {categories.map((category, index) => (
             <div
               key={index}
-              className="bg-white p-2 sm:p-4 rounded-lg shadow-md flex flex-col items-center w-28 sm:w-40 hover:shadow-xl transition-shadow duration-300"
+              className="bg-white rounded-xl shadow-sm hover:shadow-lg transition-all duration-300
+              flex flex-col items-center py-4 px-2 sm:p-4"
             >
               <img
                 src={category.image}
                 alt={category.name}
-                className="w-16 h-16 sm:w-24 sm:h-24 object-cover rounded-full mb-2 sm:mb-3"
+                className="w-14 h-14 sm:w-24 sm:h-24 object-cover rounded-full mb-2"
               />
-              <h3 className="text-xs sm:text-lg font-semibold text-[#1193d4] mb-0.5 sm:mb-1">{category.name}</h3>
-              <p className="text-gray-500 text-[10px] sm:text-sm">{category.products}</p>
+
+              <h3 className="text-xs sm:text-lg font-semibold text-[#1193d4] text-center leading-tight">
+                {category.name}
+              </h3>
+
+              <p className="text-[10px] sm:text-sm text-gray-500 mt-1">
+                {category.products}
+              </p>
             </div>
           ))}
         </div>
@@ -94,5 +104,6 @@ const ShopByCategory = () => {
     </div>
   );
 };
+
 
 export default ShopByCategory;

@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Minus, Plus } from "lucide-react";
 import FeaturedProducts from "../home/FeaturedProducts";
@@ -15,126 +14,142 @@ export default function ProductDetails() {
   const [qty, setQty] = useState(1);
 
   return (
-    <div>
-    <div className="w-full mt-10 px-6 py-10 bg-[#f8fafc] h-screen">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 h-full">
+    <div className="bg-[#f8fafc]">
 
-        {/* LEFT SECTION - Sticky Image + Thumbnails */}
-        <div className="flex gap-6">
-          {/* Thumbnails */}
-          <div className="flex flex-col gap-4 sticky top-24">
-            {thumbnails.map((img) => (
-              <div
-                key={img}
-                onClick={() => setMainImage(img)}
-                className={`
-                  w-20 h-20 border rounded-xl cursor-pointer p-1 transition-all
-                  ${mainImage === img
-                    ? "border-blue-600 shadow-md"
-                    : "border-gray-300 hover:border-gray-400 hover:scale-105"}
-                `}
-              >
+      {/* PRODUCT SECTION */}
+      <div className="w-full mt-10 px-4 sm:px-6 py-10">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8">
+
+          {/* LEFT SECTION */}
+          <div className="flex flex-col sm:flex-row gap-6">
+
+            {/* Thumbnails */}
+            <div className="flex sm:flex-col gap-3 order-2 sm:order-1 justify-center">
+              {thumbnails.map((img) => (
+                <button
+                  key={img}
+                  onClick={() => setMainImage(img)}
+                  className={`w-16 h-16 border rounded-md p-1 transition
+                  ${
+                    mainImage === img
+                      ? "border-[#1193d4] ring-1 ring-[#1193d4]/40"
+                      : "border-gray-300 hover:border-gray-400"
+                  }`}
+                >
+                  <img
+                    src={img}
+                    alt="Thumbnail"
+                    className="w-full h-full object-contain rounded-sm"
+                  />
+                </button>
+              ))}
+            </div>
+
+            {/* Image + Actions */}
+            <div className="flex flex-col gap-4 order-1 sm:order-2 w-full">
+
+              {/* Image */}
+              <div className="relative bg-white border rounded-lg p-4 flex justify-center items-center">
+                <span className="absolute top-2 right-2 bg-green-600 text-white text-[11px] px-2 py-0.5 rounded">
+                  20% OFF
+                </span>
+
                 <img
-                  src={img}
-                  className="w-full h-full object-cover rounded-lg"
-                  alt="Product Thumbnail"
+                  src={mainImage}
+                  alt="Product"
+                  className="w-full max-w-xs sm:max-w-sm h-60 sm:h-72 object-contain"
                 />
               </div>
-            ))}
-          </div>
 
-          {/* Main Image + Badge + Actions */}
-          <div className="relative sticky top-24">
-            <span className="absolute top-2 right-2 bg-red-600 text-white text-sm px-3 py-1 rounded-full shadow-md font-semibold">
-              20% OFF
-            </span>
-
-            <img
-              src={mainImage}
-              className="w-[400px] h-80 object-cover rounded-2xl bg-[#f9fafc] transition-transform duration-300 hover:scale-105 cursor-pointer"
-              alt="Product"
-            />
-
-            <div className="mt-4 flex flex-col gap-3">
-              <p className="text-3xl font-bold text-blue-600 whitespace-nowrap">
+              {/* Price */}
+              <p className="text-xl font-semibold text-gray-900">
                 $12.99
               </p>
 
-              <div className="flex items-center justify-between gap-4">
-                <div className="flex items-center border border-[#1193d4] rounded-lg overflow-hidden">
+              {/* Qty + Button */}
+              <div className="flex flex-col sm:flex-row sm:items-center gap-4">
+
+                <div className="flex items-center border rounded-sm overflow-hidden w-max">
                   <button
                     onClick={() => setQty((q) => Math.max(1, q - 1))}
-                    className="px-1 py-2 hover:bg-gray-100"
+                    className="px-3 py-1 hover:bg-gray-100"
                   >
                     <Minus size={16} />
                   </button>
 
-                  <span className="px-2 text-lg font-semibold">{qty}</span>
+                  <span className="px-3 text-sm font-medium">{qty}</span>
 
                   <button
                     onClick={() => setQty((q) => q + 1)}
-                    className="px-1 py-2 hover:bg-gray-100"
+                    className="px-3 py-1 hover:bg-gray-100"
                   >
                     <Plus size={16} />
                   </button>
                 </div>
 
-                <button className="bg-blue-600 text-white py-2 px-6 -mt-20 rounded-xl whitespace-nowrap transform transition-all duration-200 hover:scale-105 hover:shadow-md">
+                <button className="bg-[#1193d4] text-white px-5 py-2 rounded-md text-sm
+                hover:bg-[#0e80b3] transition w-full sm:w-auto">
                   Add to Cart
                 </button>
               </div>
             </div>
           </div>
-        </div>
 
-        {/* RIGHT SECTION - Scrollable Content */}
-        <div className="space-y-8 overflow-y-auto pr-4 scrollbar-thin h-full">
-          <div>
-            <h1 className="text-3xl font-bold text-gray-900">
-              Paracetamol 500mg Tablets
-            </h1>
-            <p className="text-sm text-gray-500 mt-1">(125 Reviews)</p>
-          </div>
+          {/* RIGHT SECTION */}
+          <div className="flex flex-col gap-4">
 
-          <div className="space-y-3 text-gray-700 leading-relaxed">
-            <p>
+            <div>
+              <h1 className="text-2xl font-semibold text-gray-900">
+                Paracetamol 500mg Tablets
+              </h1>
+              <p className="text-sm text-[#1193d4] mt-1 cursor-pointer">
+                (125 Reviews)
+              </p>
+            </div>
+
+            <p className="text-gray-600 text-sm leading-relaxed max-w-xl">
               Paracetamol is widely used for pain relief and fever reduction.
               Works effectively for headaches, body aches, and cold symptoms.
             </p>
-            <ul className="list-disc ml-6 space-y-1">
+
+            <ul className="list-disc ml-5 space-y-1 text-sm text-gray-700">
               <li>Fast pain relief</li>
               <li>Safe for adults when taken as directed</li>
               <li>Clinically tested formula</li>
             </ul>
-          </div>
 
-          <div className="space-y-4">
-            {["Full Ingredients", "Usage Instructions", "Doses", "How It Works", "Warnings"].map((title, idx) => (
-              <details key={idx} className="border p-4 rounded-xl">
-                <summary className="cursor-pointer font-semibold">{title}</summary>
-                <p className="mt-2 text-gray-600">
-                  {title === "Full Ingredients" &&
-                    "Paracetamol 500mg, Microcrystalline Cellulose, Starch, Magnesium Stearate."}
-                  {title === "Usage Instructions" &&
-                    "Take 1-2 tablets with water as needed. Do not exceed 8 tablets in 24 hours."}
-                  {title === "Doses" &&
-                    "Adults: 500mg-1000mg every 4-6 hours as needed. Children: Follow pediatrician guidance."}
-                  {title === "How It Works" &&
-                    "Paracetamol works by blocking the production of prostaglandins in the brain which are chemicals that cause pain and fever."}
-                  {title === "Warnings" &&
-                    "Avoid exceeding the recommended dose. Not suitable for patients with liver disease. Consult a doctor if pregnant or breastfeeding."}
-                </p>
-              </details>
-            ))}
+            <div className="border-t border-gray-200 mt-4">
+              {[
+                "Full Ingredients",
+                "Usage Instructions",
+                "Doses",
+                "How It Works",
+                "Warnings",
+              ].map((title, idx) => (
+                <details key={idx} className="border-b border-gray-200 py-3">
+                  <summary className="cursor-pointer text-sm font-medium text-gray-900">
+                    {title}
+                  </summary>
+                  <p className="mt-2 text-sm text-gray-600 leading-relaxed">
+                    Content goes here
+                  </p>
+                </details>
+              ))}
+            </div>
           </div>
         </div>
+      </div>
 
+      {/* RELATED PRODUCTS */}
+      <div className="mt-10 py-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <h2 className="text-xl sm:text-2xl font-semibold text-gray-900 mb-4">
+            Related Products
+          </h2>
+          <FeaturedProducts columns="md:grid-cols-5" />
+        </div>
       </div>
-    </div>
-    <div className="mt-2">
-        <h2 className="text-2xl font-bold text-gray-900 mb-6">Related Products</h2>
-        <FeaturedProducts columns="md:grid-cols-5" />
-      </div>
+
     </div>
   );
 }

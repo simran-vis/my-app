@@ -63,6 +63,28 @@ const iconMap = {
       originalPrice: 180.0,
       price: 149.0,
     },
+     {
+      id: 5,
+      title: "Senior Citizen Bone Care",
+      category: "Comprehensive Package",
+      icon: "science",
+      description:
+        "Designed specifically for seniors. Includes Vitamin D, Calcium, Rheumatoid Factor, and Alkaline Phosphatase.",
+      fasting: true,
+      originalPrice: 180.0,
+      price: 149.0,
+    },
+     {
+      id: 6,
+      title: "Senior Citizen Bone Care",
+      category: "Comprehensive Package",
+      icon: "science",
+      description:
+        "Designed specifically for seniors. Includes Vitamin D, Calcium, Rheumatoid Factor, and Alkaline Phosphatase.",
+      fasting: true,
+      originalPrice: 180.0,
+      price: 149.0,
+    },
   ];
 
   return (
